@@ -8,8 +8,34 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            /* Cor de fundo sugerida */
+        }
+
+        #phone-container {
+            background-color: white;
+            /* Moldura do celular em preto */
+            border: 16px solid #000;
+            /* Cor das bordas da moldura */
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Sombra sugerida */
             text-align: center;
+            position: relative;
+        }
+
+        #contact-container {
+            border: 1px solid black;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            padding: 10px;
+            display: inline-block;
         }
 
         #profile-image {
@@ -18,7 +44,6 @@
             height: 150px;
             object-fit: cover;
             margin-bottom: 10px;
-            align-self: center;
             border: 1px solid black;
         }
 
@@ -32,32 +57,38 @@
 
         label {
             margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #000;
+            /* Cor do texto das labels */
         }
 
-        label[for="telefone"] {
-            align-self: flex-start;
-        }
-
+        label[for="telefone"],
         label[for="email"] {
-
             align-self: flex-start;
-
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 10px;
+            color: #000;
+            /* Cor do texto das labels */
         }
 
         input {
             margin-bottom: 15px;
             padding: 8px;
             text-align-last: center;
+            width: calc(100% - 20px);
+            box-sizing: border-box;
         }
 
         button {
             padding: 10px;
             background-color: #4CAF50;
-            margin-left: 10px;
             color: white;
             border: none;
             cursor: pointer;
             margin-bottom: 15px;
+            margin-left: 5px;
         }
 
         button:hover {
@@ -65,40 +96,48 @@
         }
 
         button#salvar-contato {
-            align-self: center;
-            width: 120%;
+            width: calc(100% - 20px);
+            margin-top: 15px;
+            box-sizing: border-box;
             padding: 10px;
             color: white;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+
         }
     </style>
 </head>
 
-
 <body>
-    <h2>Informações de Contato</h2>
-    <br>
-    <img id="profile-image" src="https://i.ibb.co/tb3vmZP/Saude-Iguatemi-2.png" alt="Imagem">
-
-    <form>
-        <h3>APOIO PASS</h3>
-        <br><br>
-        <label for="telefone">Telefone:</label>
-        <div style="display: flex;">
-            <input type="tel" id="telefone" name="telefone" value="0800 282 6666" readonly>
-            <button type="button" onclick="salvarContato()">Ligar</button>
-        </div>
-        
-        <label for="email">E-mail:</label>
-        <div style="display: flex;">
-            <input type="email" id="email" name="email" value="teste@teste.com" readonly>
-            <button type="button" onclick="enviarEmail()">Enviar</button>
+    <div id="phone-container">
+        <h2>Informações de Contato</h2>
+        <div id="contact-container">
+            <img id="profile-image" src="https://i.ibb.co/tb3vmZP/Saude-Iguatemi-2.png" alt="Imagem">
         </div>
 
-        <!-- Botão adicional para salvar o contato -->
-        <br><br>
-        <button id="salvar-contato" name="salvar-contato" type="button" onclick="salvarContatoCompleto()">Salvar
-            Contato</button>
-    </form>
+        <form>
+            <h3>APOIO PASS</h3>
+
+            <label for="telefone">Número de Telefone:</label>
+            <div style="display: flex;">
+                <input type="tel" id="telefone" name="telefone" value="0800 282 6666" readonly>
+                <button type="button" onclick="salvarContato()">Salvar</button>
+            </div>
+
+            <label for="email">Endereço de E-mail:</label>
+            <div style="display: flex;">
+                <input type="email" id="email" name="email" value="teste@teste.com" readonly>
+                <button type="button" onclick="enviarEmail()">Enviar</button>
+            </div>
+
+            <!-- Botão adicional para salvar o contato -->
+            <br><br><br>
+            <button id="salvar-contato" name="salvar-contato" type="button" onclick="salvarContatoCompleto()">Salvar
+                Contato</button>
+        </form>
+    </div>
 
     <script>
         function salvarContato() {
